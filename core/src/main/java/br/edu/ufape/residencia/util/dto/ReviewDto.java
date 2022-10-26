@@ -8,6 +8,7 @@ public class ReviewDto {
 	private String author;
 	private String title;
 	private String body;
+	private int grade;
 	private long productId;
 
 }

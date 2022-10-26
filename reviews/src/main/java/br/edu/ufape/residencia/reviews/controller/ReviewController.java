@@ -15,18 +15,23 @@ import br.edu.ufape.residencia.reviews.model.Review;
 import br.edu.ufape.residencia.reviews.repository.ReviewRepository;
 
 @RestController
-@RequestMapping("/review/")
+@RequestMapping("/review")
 public class ReviewController {
 	
 	@Autowired
 	private ReviewRepository repository;
 	
-	@PostMapping("/")
+	@GetMapping("")
+	public List<Review> getReviews() {
+		return repository.findAll();
+	}
+	
+	@PostMapping("")
 	public Review createReview(@RequestBody Review r) {
 		return repository.save(r);
 	}
 	
-	@GetMapping("product/{id}")
+	@GetMapping("/product/{id}")
 	public List<Review> getProductReviews(@PathVariable long id) {
 		return repository.findByProductId(id);
 	}
